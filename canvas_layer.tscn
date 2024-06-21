@@ -1,0 +1,67 @@
+[gd_scene load_steps=4 format=3 uid="uid://cfq2vmyjx7bf"]
+
+[ext_resource type="Script" path="res://MainTextBox.gd" id="1_6mty1"]
+[ext_resource type="Theme" uid="uid://cwtekebdc1dq0" path="res://assets/Fonts/main_text_box.theme" id="2_2uqmn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ttm0y"]
+bg_color = Color(0.742108, 0.824402, 0.812577, 1)
+border_width_left = 4
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 5
+border_color = Color(0.196665, 0.26158, 0.253017, 1)
+corner_radius_top_left = 9
+corner_radius_top_right = 9
+corner_radius_bottom_right = 13
+corner_radius_bottom_left = 13
+corner_detail = 5
+shadow_size = 1
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_6mty1")
+
+[node name="TextHandler" type="Node" parent="."]
+
+[node name="Control" type="Control" parent="TextHandler"]
+clip_contents = true
+layout_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -121.0
+offset_top = -186.0
+offset_right = 129.0
+offset_bottom = -81.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("2_2uqmn")
+
+[node name="Panel" type="Panel" parent="TextHandler/Control"]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_2uqmn")
+theme_override_styles/panel = SubResource("StyleBoxFlat_ttm0y")
+
+[node name="TextBox" type="Label" parent="TextHandler/Control/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 7.0
+offset_top = 5.0
+offset_right = -5.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.81414, 0.876596, 0.867444, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 1
+clip_text = true

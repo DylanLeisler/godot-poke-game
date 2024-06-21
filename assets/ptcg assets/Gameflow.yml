@@ -1,0 +1,20 @@
+Structure:
+  Classes:
+    - Player:
+      num: 2
+      Board:
+        Space:
+          num: 6
+          Active Space:
+            num: 1
+            cards
+          Benched Space:
+            num: 5
+      Discard Pile
+      Deck
+      Stadium
+        
+
+Gameflow:
+  - Two 'Player' Objects. Alternate between them, turn by turn.
+  - 
