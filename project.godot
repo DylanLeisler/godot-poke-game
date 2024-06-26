@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 PixelPen="*res://addons/net.yarvis.pixel_pen/pixelpen_singleton.gd"
 PlayerProperties="*res://player_properties.gd"
 MainTextBox="*res://canvas_layer.tscn"
+PlayerInput="*res://player_input.gd"
 
 [display]
 
@@ -54,8 +55,13 @@ move_down={
 ]
 }
 interact={
-"deadzone": 1.0,
+"deadzone": 0.1,
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":67,"key_label":0,"unicode":0,"echo":false,"script":null)
+]
+}
+menu_open={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194309,"key_label":0,"unicode":0,"echo":false,"script":null)
 ]
 }
 

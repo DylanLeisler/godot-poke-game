@@ -10,23 +10,24 @@ var player_global_position: Vector2 # Used to check if player has moved
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	screen_size = get_viewport_rect().size
+	PlayerProperties.set_player(self)
 	
 func _physics_process(delta):
 	var velocity = Vector2.ZERO # The player's movement vector.
 	#print(velocity)
-
-	if Input.is_action_pressed("move_right"):
-		$AnimatedSprite2D.animation = "right"
-		velocity.x += 1
-	elif Input.is_action_pressed("move_left"):
-		$AnimatedSprite2D.animation = "left"
-		velocity.x -= 1
-	elif Input.is_action_pressed("move_down"):
-		$AnimatedSprite2D.animation = "down"
-		velocity.y += 1
-	elif Input.is_action_pressed("move_up"):
-		$AnimatedSprite2D.animation = "up"
-		velocity.y -= 1
+	if not PlayerProperties.player_movement_locked:
+		if PlayerInput.is_action_pressed("move_right"):
+			$AnimatedSprite2D.animation = "right"
+			velocity.x += 1
+		elif PlayerInput.is_action_pressed("move_left"):
+			$AnimatedSprite2D.animation = "left"
+			velocity.x -= 1
+		elif PlayerInput.is_action_pressed("move_down"):
+			$AnimatedSprite2D.animation = "down"
+			velocity.y += 1
+		elif PlayerInput.is_action_pressed("move_up"):
+			$AnimatedSprite2D.animation = "up"
+			velocity.y -= 1
 
 	if velocity.length() >= 1.0:
 		velocity = velocity.normalized() * speed

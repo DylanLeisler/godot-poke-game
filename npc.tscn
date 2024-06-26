@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bjwxfxsqkg4yr" path="res://assets/Sprites/PlayerSprites_alpha.png" id="1_06du0"]
 [ext_resource type="Script" path="res://npc.gd" id="1_k5qu5"]
+[ext_resource type="PackedScene" uid="uid://4502brinrqht" path="res://npc_interact.tscn" id="3_8ogsd"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w352s"]
 atlas = ExtResource("1_06du0")
@@ -1237,9 +1238,6 @@ texture_region_size = Vector2i(16, 32)
 [sub_resource type="TileSet" id="TileSet_y5kta"]
 sources/0 = SubResource("TileSetAtlasSource_7i7ad")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_xpibw"]
-size = Vector2(34.75, 32.25)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s3geh"]
 size = Vector2(14, 18)
 
@@ -1256,12 +1254,7 @@ frame = 1
 tile_set = SubResource("TileSet_y5kta")
 format = 2
 
-[node name="Area2D" type="Area2D" parent="."]
-
-[node name="Interact_Area" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("RectangleShape2D_xpibw")
+[node name="npc_interact" parent="." instance=ExtResource("3_8ogsd")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_s3geh")
-
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

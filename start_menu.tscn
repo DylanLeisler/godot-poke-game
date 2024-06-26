@@ -1,0 +1,129 @@
+[gd_scene load_steps=5 format=3 uid="uid://c7yf6ikxb2a2j"]
+
+[ext_resource type="FontFile" uid="uid://bytikuhmjqa8t" path="res://assets/Fonts/AmericanStencil.otf" id="1_h4jy2"]
+
+[sub_resource type="Gradient" id="Gradient_ffse0"]
+offsets = PackedFloat32Array(0, 0.0432099, 0.962963, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.96861, 0.952643, 0.975412, 1, 0.663654, 0.322824, 0.83993, 1, 0.660492, 0.316295, 0.484171, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_o6nga"]
+noise_type = 3
+seed = 2
+frequency = 0.0287
+fractal_type = 3
+domain_warp_enabled = true
+domain_warp_type = 1
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_5vn78"]
+width = 150
+height = 35
+color_ramp = SubResource("Gradient_ffse0")
+noise = SubResource("FastNoiseLite_o6nga")
+
+[node name="StartMenu" type="MarginContainer"]
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+metadata/_edit_group_ = true
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="AspectRatioContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="AspectRatioContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.61451, 3.97079e-07, 4.81307e-07, 1)
+theme_override_colors/font_hover_color = Color(0.303259, 1.62441e-07, 9.62615e-08, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("1_h4jy2")
+text = "Pokedex"
+icon = SubResource("NoiseTexture2D_5vn78")
+icon_alignment = 1
+
+[node name="Button2" type="Button" parent="AspectRatioContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.61451, 3.97079e-07, 4.81307e-07, 1)
+theme_override_colors/font_hover_color = Color(0.303259, 1.62441e-07, 9.62615e-08, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("1_h4jy2")
+text = "Pokemon"
+icon = SubResource("NoiseTexture2D_5vn78")
+icon_alignment = 1
+
+[node name="Button3" type="Button" parent="AspectRatioContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.61451, 3.97079e-07, 4.81307e-07, 1)
+theme_override_colors/font_hover_color = Color(0.303259, 1.62441e-07, 9.62615e-08, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("1_h4jy2")
+text = "Da Bag"
+icon = SubResource("NoiseTexture2D_5vn78")
+text_overrun_behavior = 1
+icon_alignment = 1
+
+[node name="Button4" type="Button" parent="AspectRatioContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.61451, 3.97079e-07, 4.81307e-07, 1)
+theme_override_colors/font_hover_color = Color(0.303259, 1.62441e-07, 9.62615e-08, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("1_h4jy2")
+text = "Anotha One"
+icon = SubResource("NoiseTexture2D_5vn78")
+text_overrun_behavior = 1
+icon_alignment = 1
+
+[node name="Button5" type="Button" parent="AspectRatioContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.61451, 3.97079e-07, 4.81307e-07, 1)
+theme_override_colors/font_hover_color = Color(0.303259, 1.62441e-07, 9.62615e-08, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("1_h4jy2")
+text = "Bring out"
+icon = SubResource("NoiseTexture2D_5vn78")
+text_overrun_behavior = 1
+icon_alignment = 1
+
+[node name="Button6" type="Button" parent="AspectRatioContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.61451, 3.97079e-07, 4.81307e-07, 1)
+theme_override_colors/font_hover_color = Color(0.303259, 1.62441e-07, 9.62615e-08, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("1_h4jy2")
+text = "Tha Lobsta"
+icon = SubResource("NoiseTexture2D_5vn78")
+text_overrun_behavior = 1
+icon_alignment = 1

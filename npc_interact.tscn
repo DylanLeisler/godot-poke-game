@@ -1,0 +1,40 @@
+[gd_scene load_steps=3 format=3 uid="uid://4502brinrqht"]
+
+[ext_resource type="Script" path="res://npc_interact.gd" id="1_jhq01"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8agy7"]
+size = Vector2(8, 4)
+
+[node name="InteractionAreas" type="Node2D"]
+script = ExtResource("1_jhq01")
+metadata/_edit_group_ = true
+
+[node name="North" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="North"]
+position = Vector2(4.37114e-08, -7)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_8agy7")
+metadata/_edit_group_ = true
+
+[node name="South" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="South"]
+position = Vector2(0, 7)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_8agy7")
+metadata/_edit_group_ = true
+
+[node name="West" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="West"]
+position = Vector2(-6, 0)
+shape = SubResource("RectangleShape2D_8agy7")
+metadata/_edit_group_ = true
+
+[node name="East" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="East"]
+position = Vector2(6, 0)
+shape = SubResource("RectangleShape2D_8agy7")
+metadata/_edit_group_ = true

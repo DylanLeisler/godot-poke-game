@@ -2,6 +2,7 @@ extends Node
 
 var new_scene = false
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	new_game()

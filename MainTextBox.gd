@@ -18,7 +18,7 @@ var char_height
 var chars_per_line
 var max_visible_lines
 var theme
-var leftover_text = ""
+var spillover_text = ""
 var is_spillover
 
 
@@ -29,8 +29,17 @@ func _ready():
 	panel_height = panel.get_rect().size.y
 	panel_width = panel.get_rect().size.x
 
-func show_text_box():
+func show_text_box(lock_player_position=true):
 	control.show()
+	if lock_player_position:
+		lock_player()
+		
+func lock_player():
+	PlayerProperties.player_movement_locked = true
+	
+func unlock_player():
+	PlayerProperties.player_movement_locked = false
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -38,93 +47,82 @@ func _process(delta):
 	
 func display_text(text: String):
 	if text_box.text == "" and not is_spillover:
-		#text_box.set_text(text)
 		show_text_box()
+		
+		# Theme font dimensions
 		theme = control.get_theme_font("res://assets/Fonts/main_text_box.theme")
 		var char_dimensions = theme.get_string_size("A", 0 ,-1, control.get_theme_default_font_size())
 		char_width = char_dimensions.x
 		char_height = char_dimensions.y
 		
-		#for letter in "A B C D E F G H I J K L M O P Q R S T U V W X Y Z".split(" "):
-			#prints("Size of ", letter, ": ", theme.get_string_size(letter, 0 ,-1, 10))
-		chars_per_line = floor(panel_width/char_width)
+		# Lines
+		chars_per_line = floor(panel_width/char_width)-1
 		max_visible_lines = floor(panel_height/char_height)-1
-		current_line = max_visible_lines
+
 		handle_text(text)
-		var text_length = text_box.text.length()
-		var total_lines = text_box.text.count("\n")  #floor(text_length/chars_per_line) + 1
-		#for c in text_box.text:
-			#print(c)
-		#print(text_length)
-		#print(text.length())
-		#if total_lines == text_box.get_line_count():
-			#print("total lines matches total lines!")
-		#else:
-			#prints("total lines = ", total_lines)
-			#prints("text_box line count = ", text_box.get_line_count())	
-		var char_limit = max_visible_lines*chars_per_line
+	
 	else:
 		text_box.text = ""
 		if not is_spillover:
 			control.hide()
+			unlock_player()
 		else:
-			handle_text(leftover_text)
+			handle_text(spillover_text)
 			
 		
 	
 func advance_text():
-	breakpoint
-	text_box.scroll_to_line(current_line)
-	current_line += 1
+	"""For scrolling, but not yet implemented"""
+	pass
 	
 func handle_text(text):
-	var max_chars = chars_per_line
+	
+	# What will ultimately be set as the text for the text_box label
 	var formatted_text: String = ""
+	var formatted_text_line_length = 0
 	
-	var array_of_words
-	#if is_spillover:
-		#array_of_words = leftover_text
-		#is_spillover = false
-		#breakpoint
-	#else:
-		#array_of_words = text.split(" ")
-		#
-		#breakpoint
-	prints("text =\n", text)
-	array_of_words = text.split(" ")
-	prints("array of words is:\n", array_of_words)
+	# Did the text exceed one full text box?
+	# Spillover text gets passed back into this function as just 'text'
+	# So these both should be reset here
 	is_spillover = false
-	leftover_text = ""
-		
-	var break_count = 0
+	spillover_text = ""
+	
+	# Counters because GDScript is kinda ass
 	var break_count_max = max_visible_lines
-	var formatted_text_line_count = 0
-	var word_count = 0 
+	var break_count = 0
 
-	for word in array_of_words:
-		word_count += 1
+	# Cycle through each word in the text to calculate length
+	for word in text.split(" "):
+		var word_length = word.length()
+		# Checks if max amount of line breaks has (not) been reached
 		if break_count < break_count_max:
-			#breakpoint
-			if formatted_text_line_count + word.length() >= max_chars:
+			# Will the addition of the next word exceed the line length?
+			if formatted_text_line_length + word_length >= chars_per_line:
+				# If so, add a line break
 				break_count += 1
+				# If that incrementation causes the max to be exceeded, then
+				# start funneling the rest of the words into spillover
 				if not break_count < break_count_max:
-					is_spillover = true
-					leftover_text += " " + word
+					funnel_spillover_word(word)
+					# Force this loop to repeat until all words have been handled
 					continue
-				#print("newline")
 				formatted_text += "\n"
-				formatted_text_line_count = 0
-			else:
-				if formatted_text_line_count > 0:
-					formatted_text += " "
-					formatted_text_line_count += 1
-			#prints("Appending: ", word)
+				formatted_text_line_length = 0
+			# If the next word does NOT push over the line length
+			# Add a space if it isn't the beginning of a new line
+			elif formatted_text_line_length > 0:
+				formatted_text += " "
+				formatted_text_line_length += 1
+				
 			formatted_text += word
-			formatted_text_line_count += word.length()
+			formatted_text_line_length += word_length
+		# If max line breaks has been reached
 		else:
-			leftover_text += " " + word
-	
-	
-	prints("The contents of formatted_text is:\n", formatted_text)
+			spillover_text += " " + word
+			
+	#prints("The contents of formatted_text is:\n", formatted_text)
 	text_box.text = formatted_text
-
+	
+func funnel_spillover_word(word):
+	is_spillover = true
+	spillover_text += " " + word
