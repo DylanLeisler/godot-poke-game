@@ -1,0 +1,81 @@
+[gd_scene load_steps=3 format=3 uid="uid://b2jxlude7gxk3"]
+
+[ext_resource type="Texture2D" uid="uid://dq2jbmkw16imf" path="res://assets/Images/board/starter_board/deck-discard_area.png" id="1_vrnua"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3npiq"]
+
+[node name="GameBoard" type="CanvasLayer"]
+metadata/_edit_vertical_guides_ = [-160.0]
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_3npiq")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+clip_contents = true
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="OppSide" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(720, 0)
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="DeckArea" type="TextureRect" parent="PanelContainer/VBoxContainer/OppSide"]
+custom_minimum_size = Vector2(108, 96)
+layout_mode = 2
+size_flags_horizontal = 8
+texture = ExtResource("1_vrnua")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Bench" type="HBoxContainer" parent="PanelContainer/VBoxContainer/OppSide"]
+custom_minimum_size = Vector2(504, 96)
+layout_mode = 2
+size_flags_horizontal = 6
+
+[node name="DiscardArea" type="TextureRect" parent="PanelContainer/VBoxContainer/OppSide"]
+custom_minimum_size = Vector2(108, 96)
+layout_mode = 2
+texture = ExtResource("1_vrnua")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Center" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(720, 288)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="PlayerSide" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_override_constants/separation = 0
+
+[node name="DiscardArea" type="TextureRect" parent="PanelContainer/VBoxContainer/PlayerSide"]
+custom_minimum_size = Vector2(108, 96)
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("1_vrnua")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Bench" type="HBoxContainer" parent="PanelContainer/VBoxContainer/PlayerSide"]
+custom_minimum_size = Vector2(504, 96)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 0
+
+[node name="DeckArea" type="TextureRect" parent="PanelContainer/VBoxContainer/PlayerSide"]
+custom_minimum_size = Vector2(108, 96)
+layout_mode = 2
+size_flags_horizontal = 8
+texture = ExtResource("1_vrnua")
+expand_mode = 1
+stretch_mode = 4

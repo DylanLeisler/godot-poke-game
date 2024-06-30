@@ -32,13 +32,7 @@ func _ready():
 func show_text_box(lock_player_position=true):
 	control.show()
 	if lock_player_position:
-		lock_player()
-		
-func lock_player():
-	PlayerProperties.player_movement_locked = true
-	
-func unlock_player():
-	PlayerProperties.player_movement_locked = false
+		PlayerProperties.player_state = PlayerProperties.PlayerState.INTERACTION
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -65,7 +59,7 @@ func display_text(text: String):
 		text_box.text = ""
 		if not is_spillover:
 			control.hide()
-			unlock_player()
+			PlayerProperties.player_state = PlayerProperties.PlayerState.FREE
 		else:
 			handle_text(spillover_text)
 			
@@ -76,7 +70,6 @@ func advance_text():
 	pass
 	
 func handle_text(text):
-	
 	# What will ultimately be set as the text for the text_box label
 	var formatted_text: String = ""
 	var formatted_text_line_length = 0

@@ -26,10 +26,10 @@ func _on_body_exited(body, area_name):
 		
 func _physics_process(delta):
 	if PlayerInput.is_action_just_pressed("interact"):
-		if PlayerProperties.player_movement_locked:
+		if PlayerProperties.player_state == PlayerProperties.PlayerState.INTERACTION:
 			display(text_to_display)
-		else:
-			var correspondence = [area_entered, PlayerProperties.get_direction_faced()]
+		elif PlayerProperties.player_state == PlayerProperties.PlayerState.FREE:
+			var correspondence = [area_entered, PlayerProperties.direction_faced]
 			match correspondence:
 				["North", "down"], ["South", "up"], ["West", "right"], ["East", "left"]:
 					display(text_to_display)

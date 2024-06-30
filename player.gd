@@ -11,11 +11,13 @@ var player_global_position: Vector2 # Used to check if player has moved
 func _ready():
 	screen_size = get_viewport_rect().size
 	PlayerProperties.set_player(self)
+	PlayerProperties.player_state = PlayerProperties.PlayerState.FREE
+	PlayerProperties.start_menu_open = false
 	
 func _physics_process(delta):
 	var velocity = Vector2.ZERO # The player's movement vector.
 	#print(velocity)
-	if not PlayerProperties.player_movement_locked:
+	if not PlayerProperties.movement_locked:
 		if PlayerInput.is_action_pressed("move_right"):
 			$AnimatedSprite2D.animation = "right"
 			velocity.x += 1
@@ -46,7 +48,14 @@ func _physics_process(delta):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	if PlayerInput.is_action_just_pressed("menu_open"):
+		if PlayerProperties.player_state == PlayerProperties.PlayerState.MENU:
+			$PlayerCanvas/StartMenu.hide()
+			PlayerProperties.player_state = PlayerProperties.PlayerState.FREE
+		elif PlayerProperties.player_state == PlayerProperties.PlayerState.FREE:
+			$PlayerCanvas/StartMenu.show()
+			$PlayerCanvas/StartMenu.grab_focus()
+			PlayerProperties.player_state = PlayerProperties.PlayerState.MENU
 
 # Checks if player is colliding with something and if their position has changed
 # If true, it resets the animation to 1

@@ -1,7 +1,8 @@
-[gd_scene load_steps=19 format=3 uid="uid://c4itc0vs0vctv"]
+[gd_scene load_steps=20 format=3 uid="uid://c4itc0vs0vctv"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_04gxg"]
 [ext_resource type="Texture2D" uid="uid://bjwxfxsqkg4yr" path="res://assets/Sprites/PlayerSprites_alpha.png" id="2_e6ddk"]
+[ext_resource type="PackedScene" uid="uid://c7yf6ikxb2a2j" path="res://start_menu.tscn" id="3_iukuc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2bsnn"]
 atlas = ExtResource("2_e6ddk")
@@ -1268,5 +1269,11 @@ format = 2
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)
+
+[node name="PlayerCanvas" type="CanvasLayer" parent="."]
+
+[node name="StartMenu" parent="PlayerCanvas" instance=ExtResource("3_iukuc")]
+visible = false
+anchors_preset = 15
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

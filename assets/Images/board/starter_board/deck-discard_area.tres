@@ -1,0 +1,6 @@
+[gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://gcxru88sf8s3"]
+
+[ext_resource type="Texture2D" uid="uid://dq2jbmkw16imf" path="res://assets/Images/board/starter_board/deck-discard_area.png" id="1_q4e8g"]
+
+[resource]
+texture = ExtResource("1_q4e8g")
