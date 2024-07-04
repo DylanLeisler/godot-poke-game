@@ -1,8 +1,37 @@
-[gd_scene load_steps=3 format=3 uid="uid://b2jxlude7gxk3"]
+[gd_scene load_steps=15 format=3 uid="uid://b2jxlude7gxk3"]
 
 [ext_resource type="Texture2D" uid="uid://dq2jbmkw16imf" path="res://assets/Images/board/starter_board/deck-discard_area.png" id="1_vrnua"]
+[ext_resource type="Texture2D" uid="uid://c7bcy3jb361ao" path="res://assets/Images/board/starter_board/bench.png" id="2_5qe84"]
+[ext_resource type="Texture2D" uid="uid://dgkgklnaut4ah" path="res://assets/Images/pokemon_deck_base.png" id="2_ako40"]
+[ext_resource type="Texture2D" uid="uid://dbfqb5jnfuu6s" path="res://assets/Images/pokemon_card_back.png" id="3_aetgd"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3npiq"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_c8i25"]
+texture = ExtResource("2_ako40")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wdsta"]
+texture = ExtResource("2_5qe84")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_f86l4"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kkyma"]
+texture = ExtResource("3_aetgd")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_74uk4"]
+texture = ExtResource("3_aetgd")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5igfy"]
+texture = ExtResource("3_aetgd")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qdv50"]
+texture = ExtResource("3_aetgd")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_odnob"]
+texture = ExtResource("3_aetgd")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_inj2s"]
+texture = ExtResource("3_aetgd")
 
 [node name="GameBoard" type="CanvasLayer"]
 metadata/_edit_vertical_guides_ = [-160.0]
@@ -25,7 +54,10 @@ custom_minimum_size = Vector2(720, 0)
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="DeckArea" type="TextureRect" parent="PanelContainer/VBoxContainer/OppSide"]
+[node name="Draw_PanelContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer/OppSide"]
+layout_mode = 2
+
+[node name="DeckArea" type="TextureRect" parent="PanelContainer/VBoxContainer/OppSide/Draw_PanelContainer"]
 custom_minimum_size = Vector2(108, 96)
 layout_mode = 2
 size_flags_horizontal = 8
@@ -33,17 +65,91 @@ texture = ExtResource("1_vrnua")
 expand_mode = 1
 stretch_mode = 4
 
-[node name="Bench" type="HBoxContainer" parent="PanelContainer/VBoxContainer/OppSide"]
+[node name="Panel" type="Panel" parent="PanelContainer/VBoxContainer/OppSide/Draw_PanelContainer"]
+custom_minimum_size = Vector2(50, 70)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxTexture_c8i25")
+
+[node name="Bench_PanelContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer/OppSide"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxTexture_wdsta")
+
+[node name="Bench" type="HBoxContainer" parent="PanelContainer/VBoxContainer/OppSide/Bench_PanelContainer"]
 custom_minimum_size = Vector2(504, 96)
 layout_mode = 2
-size_flags_horizontal = 6
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 13
 
-[node name="DiscardArea" type="TextureRect" parent="PanelContainer/VBoxContainer/OppSide"]
+[node name="left_buffer" type="PanelContainer" parent="PanelContainer/VBoxContainer/OppSide/Bench_PanelContainer/Bench"]
+custom_minimum_size = Vector2(57, 70)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxEmpty_f86l4")
+
+[node name="bench_card_1" type="PanelContainer" parent="PanelContainer/VBoxContainer/OppSide/Bench_PanelContainer/Bench"]
+custom_minimum_size = Vector2(50, 70)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxTexture_kkyma")
+
+[node name="bench_card_2" type="PanelContainer" parent="PanelContainer/VBoxContainer/OppSide/Bench_PanelContainer/Bench"]
+custom_minimum_size = Vector2(50, 70)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxTexture_74uk4")
+
+[node name="bench_card_3" type="PanelContainer" parent="PanelContainer/VBoxContainer/OppSide/Bench_PanelContainer/Bench"]
+custom_minimum_size = Vector2(50, 70)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxTexture_5igfy")
+
+[node name="bench_card_4" type="PanelContainer" parent="PanelContainer/VBoxContainer/OppSide/Bench_PanelContainer/Bench"]
+custom_minimum_size = Vector2(50, 70)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxTexture_qdv50")
+
+[node name="bench_card_5" type="PanelContainer" parent="PanelContainer/VBoxContainer/OppSide/Bench_PanelContainer/Bench"]
+custom_minimum_size = Vector2(50, 70)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxTexture_odnob")
+
+[node name="bench_card_6" type="PanelContainer" parent="PanelContainer/VBoxContainer/OppSide/Bench_PanelContainer/Bench"]
+custom_minimum_size = Vector2(50, 70)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxTexture_inj2s")
+
+[node name="Discard_PanelContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer/OppSide"]
+layout_mode = 2
+
+[node name="DeckArea" type="TextureRect" parent="PanelContainer/VBoxContainer/OppSide/Discard_PanelContainer"]
 custom_minimum_size = Vector2(108, 96)
 layout_mode = 2
+size_flags_horizontal = 8
 texture = ExtResource("1_vrnua")
 expand_mode = 1
 stretch_mode = 4
+
+[node name="Panel" type="Panel" parent="PanelContainer/VBoxContainer/OppSide/Discard_PanelContainer"]
+custom_minimum_size = Vector2(50, 70)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxTexture_c8i25")
 
 [node name="Center" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
 custom_minimum_size = Vector2(720, 288)
@@ -58,24 +164,99 @@ size_flags_horizontal = 0
 size_flags_vertical = 8
 theme_override_constants/separation = 0
 
-[node name="DiscardArea" type="TextureRect" parent="PanelContainer/VBoxContainer/PlayerSide"]
-custom_minimum_size = Vector2(108, 96)
+[node name="Discard_PanelContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer/PlayerSide"]
 layout_mode = 2
-size_flags_horizontal = 0
-texture = ExtResource("1_vrnua")
-expand_mode = 1
-stretch_mode = 4
 
-[node name="Bench" type="HBoxContainer" parent="PanelContainer/VBoxContainer/PlayerSide"]
-custom_minimum_size = Vector2(504, 96)
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_constants/separation = 0
-
-[node name="DeckArea" type="TextureRect" parent="PanelContainer/VBoxContainer/PlayerSide"]
+[node name="DeckArea" type="TextureRect" parent="PanelContainer/VBoxContainer/PlayerSide/Discard_PanelContainer"]
 custom_minimum_size = Vector2(108, 96)
 layout_mode = 2
 size_flags_horizontal = 8
 texture = ExtResource("1_vrnua")
 expand_mode = 1
 stretch_mode = 4
+
+[node name="Panel" type="Panel" parent="PanelContainer/VBoxContainer/PlayerSide/Discard_PanelContainer"]
+custom_minimum_size = Vector2(50, 70)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxTexture_c8i25")
+
+[node name="Bench_PanelContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer/PlayerSide"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxTexture_wdsta")
+
+[node name="Bench" type="HBoxContainer" parent="PanelContainer/VBoxContainer/PlayerSide/Bench_PanelContainer"]
+custom_minimum_size = Vector2(504, 96)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 13
+
+[node name="left_buffer" type="PanelContainer" parent="PanelContainer/VBoxContainer/PlayerSide/Bench_PanelContainer/Bench"]
+custom_minimum_size = Vector2(57, 70)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxEmpty_f86l4")
+
+[node name="bench_card_1" type="PanelContainer" parent="PanelContainer/VBoxContainer/PlayerSide/Bench_PanelContainer/Bench"]
+custom_minimum_size = Vector2(50, 70)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxTexture_kkyma")
+
+[node name="bench_card_2" type="PanelContainer" parent="PanelContainer/VBoxContainer/PlayerSide/Bench_PanelContainer/Bench"]
+custom_minimum_size = Vector2(50, 70)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxTexture_74uk4")
+
+[node name="bench_card_3" type="PanelContainer" parent="PanelContainer/VBoxContainer/PlayerSide/Bench_PanelContainer/Bench"]
+custom_minimum_size = Vector2(50, 70)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxTexture_5igfy")
+
+[node name="bench_card_4" type="PanelContainer" parent="PanelContainer/VBoxContainer/PlayerSide/Bench_PanelContainer/Bench"]
+custom_minimum_size = Vector2(50, 70)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxTexture_qdv50")
+
+[node name="bench_card_5" type="PanelContainer" parent="PanelContainer/VBoxContainer/PlayerSide/Bench_PanelContainer/Bench"]
+custom_minimum_size = Vector2(50, 70)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxTexture_odnob")
+
+[node name="bench_card_6" type="PanelContainer" parent="PanelContainer/VBoxContainer/PlayerSide/Bench_PanelContainer/Bench"]
+custom_minimum_size = Vector2(50, 70)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxTexture_inj2s")
+
+[node name="Draw_PanelContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer/PlayerSide"]
+layout_mode = 2
+
+[node name="DeckArea" type="TextureRect" parent="PanelContainer/VBoxContainer/PlayerSide/Draw_PanelContainer"]
+custom_minimum_size = Vector2(108, 96)
+layout_mode = 2
+size_flags_horizontal = 8
+texture = ExtResource("1_vrnua")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Panel" type="Panel" parent="PanelContainer/VBoxContainer/PlayerSide/Draw_PanelContainer"]
+custom_minimum_size = Vector2(50, 70)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxTexture_c8i25")
